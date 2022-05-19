@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Static pages</h1>
+
+<% if params[:user_id] == nil %>
+  <%= render "form" %>
+<% else %>
+  <%= render "form" %>
+  <% if params[:user_id].empty? %>
+    <p>Flickr API is displaying the latest public photos on flickr</p>
+  <% else %>
+    <p>Flickr API is displaying public photos uploaded by <%= params[:user_id] %></p>
+  <% end %>
+  <% @photos.each do |photo| %>
+    <img src="<%= Flickr.url_n(photo) %>">
+  <% end %>
+<% end %>
